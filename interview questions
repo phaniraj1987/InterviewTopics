@@ -1,0 +1,264 @@
+Difference between == and .Equals()?
+
+Aspect==Equals()
+Default behaviorReference comparison (objects)Value comparison
+Overridable✔ Yes✔ Yes
+Used forOperator comparison Method‑based comparison
+
+
+string a = "test";
+string b = "test";
+
+Console.WriteLine(a == b);        // true
+Console.WriteLine(a.Equals(b));   // true
+
+What are the four pillars of OOP?
+Answer:
+
+Encapsulation – hiding internal details
+Inheritance – code reuse
+Polymorphism – one interface, many implementations
+Abstraction – hiding complexity
+
+
+Abstract Class InterfaceCan
+have implementation No implementation (before C# 8)
+Supports fields ❌
+Multiple inheritance ❌ 
+Use case“Is‑a” relationship
+
+
+Default Interface Methods (C# 8.0+)
+
+Starting with C# 8.0, interfaces can include method implementations using default interface methods
+
+public interface ILogger
+{
+    void Log(string message)
+    {
+        Console.WriteLine($"Log: {message}");
+    }
+}
+A class implementing this interface does not have to implement Log, unless it wants to override it:
+public class FileLogger : ILogger
+{
+    // Optional override
+    public void Log(string message)
+    {
+        Console.WriteLine($"File Log: {message}");
+    }
+}
+
+🔹 Why this was introduced
+Helps add new methods to interfaces without breaking existing implementations
+Useful in library evolution and versioning
+Reduces need for abstract base classes in some cases
+
+An array is the most basic collection.
+
+int[] numbers = new int[3] { 1, 2, 3 };
+
+Key characteristics:
+Fixed size → cannot grow/shrink after creation
+Type-safe → all elements must be the same type
+Fastest → minimal overhead, direct memory access
+Stored in contiguous memory
+
+When to use:
+When size is known and won’t change
+Performance-critical scenarios
+
+2. ArrayList (System.Collections.ArrayList)
+Key characteristics:
+Dynamic size
+Not type-safe → can store any type (object)
+Uses boxing/unboxing for value types → performance hit
+Belongs to non-generic collections (legacy)
+Problems:
+An ArrayList is a non-generic dynamic collection (old, pre-generics).
+ArrayList list = new ArrayList();
+list.Add(1);
+list.Add("hello");
+
+ ArrayList arrayList = new ArrayList();
+ 
+        arrayList.Add(1);
+        arrayList.Add("Phani");
+        arrayList.Add(3.14);
+        arrayList.Add(true);
+        int x = (int)list[0]; // Requires casting → runtime error risk
+When to use:
+Honestly: almost never in modern C#
+Only for legacy code compatibility
+
+
+3. List<T> (System.Collections.Generic.List<T>)
+
+This is the modern, recommended collection.
+  List<int> numbers = new List<int>(){1,2};
+        numbers.Add(3);
+        numbers.Add(4);
+Key characteristics:
+Dynamic size
+Type-safe (generic)
+No boxing/unboxing
+Better performance than ArrayList
+Rich API (LINQ support, etc.)
+
+
+Difference between async and Task?
+Task is a type (a class in .NET) that represents an asynchronous operation.
+
+Think of it as a promise/future:
+
+“This work will complete later, and may return a result.”
+Task task = DoWorkAsync();          // no result
+Task<int> taskWithResult = GetDataAsync(); // returns int
+
+Key points:
+Represents ongoing or future work
+Can be:
+awaited
+combined (Task.WhenAll)
+inspected (Status, IsCompleted, etc.)
+Exists even without async keyword
+async is a keyword used on methods.
+
+It tells the compiler:
+
+“This method contains asynchronous operations and can use await.”
+public async Task<int> GetDataAsync()
+{
+    await Task.Delay(1000);
+    return 42;
+}
+Key points:
+Enables use of await
+Changes how the method is compiled (state machine)
+Usually returns:
+Task
+Task<T>
+ValueTask<T>
+(rarely void)
+
+Feature	Task	async
+What it is	A type (object)	A keyword (modifier)
+Purpose	Represents async work	Enables async/await in a method
+Can exist alone?	✅ Yes	❌ No (used with a method)
+Returns	N/A	Usually returns Task/Task<T>
+
+Important Relationship
+async methods typically return Task
+await works on Task
+👉 So they are designed to work together, but are not the same.
+
+without async
+public Task<int> GetData(){
+return Task.FromResult(42);
+}
+
+with async
+public async Task<int> GetDataasync(){
+await Task.Delay(1000);
+return 42;
+}
+
+⚠️ Common Mistakes
+❌ Confusing async with multithreading
+async ≠ new thread
+It’s about non-blocking I/O, not parallelism
+
+❌ Using async void
+public async void DoWork() // avoid
+Cannot be awaited
+Exceptions crash the process
+
+👉 Use:
+
+public async Task DoWork()
+
+
+❌ Blocking on Task
+var result = GetDataAsync().Result; // can cause deadlocks
+
+👉 Prefer:
+
+var result = await GetDataAsync();
+
+🧠 Interview-style answer
+
+“Task is the object that represents an asynchronous operation, while async is a keyword that allows a method to use await
+and return a Task. async simplifies asynchronous programming, but the underlying abstraction is Task.”
+
+💡 Simple analogy
+Task → the delivery package
+async → the system that lets you track and wait for delivery without blocking
+
+const vs readonly keyword:
+const is a A compile-time constant
+public const int MaxUsers = 100;
+
+Key characteristics:
+Value is fixed at compile time
+Must be assigned at declaration
+Implicitly static
+Only supports primitive types, string, enum
+
+readonly :
+A runtime constant (set once, but at runtime).
+public readonly int MaxUsers;
+Key characteristics:
+Can be assigned:
+At declaration
+In constructor
+Value can differ per instance (if not static)
+Supports any type
+
+public class Config
+{
+    public readonly int MaxUsers;
+
+    public Config(int maxUsers)
+    {
+        MaxUsers = maxUsers;
+    }
+}
+
+
+| Feature         | `const`                    | `readonly`                 |
+| --------------- | -------------------------- | -------------------------- |
+| Evaluation time | Compile-time               | Runtime                    |
+| Assignment      | Must assign at declaration | Declaration or constructor |
+| Static          | Always static              | Can be instance or static  |
+| Types allowed   | Primitive, string, enum    | Any type                   |
+| Versioning      | ❌ Risky (inlined)          | ✅ Safe                     |
+
+Use const when:
+Value is truly unchanging forever
+Example:
+public const double Pi = 3.14159;
+
+
+Use readonly when:
+Value depends on:
+configuration
+constructor input
+runtime logic
+Or when exposing values from libraries
+
+🧠 Interview one-liner
+
+“const is a compile-time constant and is inlined, while readonly is a runtime constant that can be assigned in a constructor and is safer for versioning.”
+
+public const int Timeout = 30;
+Compile-time constant
+Value is inlined into IL
+Always static implicitly
+Cannot change ever (even at runtime)
+
+public static readonly int Timeout = 30;
+Evaluated at runtime
+Stored in memory (not inlined)
+Can be assigned:
+at declaration
+in static constructor
