@@ -1,0 +1,157 @@
+✅ 1️⃣ 50 C# Coding Problems (Easy → Hard)
+I’ll group them so you know what interviewers are testing.
+🟢 Easy (Basics & Logic)
+
+Reverse a string
+Check palindrome
+Find largest / smallest number
+Sum of digits
+Fibonacci series
+Factorial (iterative & recursive)
+Count vowels/consonants
+Swap two numbers without temp
+Check prime number
+Count occurrences in array
+
+
+ Medium (LINQ, Collections, Algorithms)
+
+Second highest number
+Remove duplicates from list
+Merge two sorted arrays
+Find missing number (1–N)
+First non‑repeating character
+Group words by anagram
+Flatten nested collections (SelectMany)
+Intersection of two lists
+LINQ join between two objects
+Sort dictionary by value
+
+🔵 Medium‑Hard (Real‑World)
+
+Validate brackets ({[]})
+Find longest substring without repeating chars
+Binary search implementation
+Convert List to Dictionary safely
+Paginate list manually
+Find top N elements efficiently
+Cache results using Dictionary
+Implement custom comparer
+Count word frequencies from string
+Implement stack using array
+
+🔴 Hard (Senior Level / Architecture Thinking)
+
+Thread‑safe singleton
+Producer‑consumer using BlockingCollection
+LRU Cache implementation
+Deadlock example & fix
+Rate limiter (in‑memory)
+Retry mechanism with exponential backoff
+Detect circular dependency
+Async parallel execution with throttling
+Memory‑efficient large file read
+Implement pipeline using Delegates
+
+⚫ Very Hard (System Thinking)
+
+Custom middleware
+Generic repository with Unit of Work
+Distributed cache fallback logic
+API idempotency logic
+Optimistic concurrency handling
+CQRS write vs read model
+Event‑driven order processing
+Bulk insert optimization
+Circuit breaker logic
+Design a background job system
+
+🔹 How do you handle high traffic?
+✅ Read replicas
+✅ CQRS
+✅ Pagination
+✅ Rate limiting
+✅ CDN for static data
+
+🔹 How do you ensure fault tolerance?
+✅ Retry + Circuit Breaker
+✅ Timeout policies
+✅ Fallback logic
+✅ Health checks
+
+🔹 How do you design microservices communication?
+✅ REST for sync
+✅ Messaging (Azure Service Bus / Kafka)
+✅ Idempotent consumers
+
+🔹 Observability Stack
+✅ Structured logging
+✅ Correlation IDs
+✅ Distributed tracing
+✅ Metrics (CPU, memory, latency)
+
+💡 Senior One‑Line Answers
+
+“I design for failure first, scale horizontally, use async end‑to‑end, and measure everything.”
+
+
+🔹 How do you handle high traffic?
+✅ Read replicas
+✅ CQRS
+✅ Pagination
+✅ Rate limiting
+✅ CDN for static data
+
+🔹 How do you ensure fault tolerance?
+✅ Retry + Circuit Breaker
+✅ Timeout policies
+✅ Fallback logic
+✅ Health checks
+
+🔹 How do you design microservices communication?
+✅ REST for sync
+✅ Messaging (Azure Service Bus / Kafka)
+✅ Idempotent consumers
+
+🔹 Observability Stack
+✅ Structured logging
+✅ Correlation IDs
+✅ Distributed tracing
+✅ Metrics (CPU, memory, latency)
+
+💡 Senior One‑Line Answers
+
+“I design for failure first, scale horizontally, use async end‑to‑end, and measure everything.”
+
+
+ 5️⃣ Senior .NET Engineer Interview Checklist
+✅ Must‑Know (Non‑Negotiable)
+✔ async/await internals
+✔ SOLID principles
+✔ Dependency Injection
+✔ LINQ optimizations
+✔ EF Core performance
+✔ HTTP & REST
+✔ Exception handling
+✔ Middleware vs Filters
+
+✅ Architecture Skills
+✔ Clean Architecture
+✔ CQRS
+✔ Microservices
+✔ Caching strategies
+✔ Messaging systems
+
+✅ Performance & Security
+✔ SQL indexing
+✔ Query optimization
+✔ JWT auth
+✔ OWASP basics
+✔ Rate limiting
+
+
+✅ Behavioral Readiness
+✔ Explain design decisions
+✔ Handle ambiguity
+✔ Trade‑offs discussion
+✔ Failure scenarios
