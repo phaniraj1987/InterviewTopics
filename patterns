@@ -1,0 +1,34 @@
+ Adapter Pattern in .NET Core
+The Adapter Pattern is a structural design pattern that allows incompatible interfaces to work together.
+
+It acts as a bridge between an existing class and a required interface without modifying either.
+
+“The Adapter Pattern converts the interface of a class into another interface that clients expect.”
+
+ Real‑World Analogy
+
+Mobile charger adapter
+
+Phone expects 5V USB
+Wall socket gives 230V AC
+Adapter converts one interface to another
+
+
+
+➡️ Same idea in software
+
+The Problem It Solves
+You have:
+
+Existing / third‑party / legacy code
+Interface mismatch
+You cannot change the existing code
+
+But:
+
+Your system expects a different interface
+
+
+✅ Solution: Adapter Pattern
+Wrap the incompatible class with an adapter that translates calls.
+
