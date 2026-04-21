@@ -1,0 +1,324 @@
+✅ .NET Core – Skill‑Based Interview Questions
+1️⃣ What are the key advantages of ASP.NET Core over ASP.NET Framework?
+Answer:
+ASP.NET Core is cross‑platform, lightweight, high‑performance, and modular. It has built‑in dependency injection, a unified middleware pipeline, better cloud support, and improved performance compared to ASP.NET Framework.
+
+2️⃣ What is Middleware in ASP.NET Core?
+Answer:
+Middleware is software that handles HTTP requests and responses in a pipeline. Each middleware can process, modify, or pass the request to the next component
+
+app.Use(async (context, next) =>
+{
+    // Pre-processing
+    await next();
+    // Post-processing
+});
+
+3️⃣ Difference between IActionResult and ActionResult<T>?
+Answer:
+IActionResult provides flexibility to return different HTTP responses, while ActionResult<T> provides strong typing and better API contracts, 
+making it the recommended approach for Web APIs.
+6️⃣ Difference between WHERE and HAVING?
+Answer:
+
+WHERE filters rows before grouping
+HAVING filters groups after aggregation
+4️⃣ How does Dependency Injection work in ASP.NET Core?
+Answer:
+ASP.NET Core has a built‑in DI container that injects dependencies through constructors, promoting loose coupling, testability, and adherence to SOLID principles.
+
+5️⃣ How do you handle global exception handling?
+
+
+Answer:
+Using middleware or exception filters to handle all unhandled exceptions consistently.
+
+Difference between WHERE and HAVING?
+Answer:
+
+WHERE filters rows before grouping
+HAVING filters groups after aggregation
+SELECT Department, COUNT(*)
+FROM Employees
+GROUP BY Department
+HAVING COUNT(*) > 5;
+
+
+What is normalization?
+Answer:
+Normalization is the process of organizing data to reduce redundancy and improve data integrity by dividing data into related tables.
+
+How do you find duplicate records in a table?
+SELECT Email, COUNT(*)
+FROM Users
+GROUP BY Email
+HAVING COUNT(*) > 1;
+
+What is Angular?
+Answer:
+Angular is a TypeScript‑based frontend framework used to build scalable single‑page applications with component‑based architecture.
+
+
+ What is a Component in Angular?
+Answer:
+A component controls a part of the UI and consists of:
+
+TypeScript class
+HTML template
+CSS styles
+
+How do you improve Angular performance?
+Answer:
+
+OnPush change detection
+Lazy loading modules
+TrackBy in ngFor
+Avoid unnecessary API calls
+
+What is Azure App Service?
+Answer:
+Azure App Service is a PaaS service for hosting web apps, APIs, and mobile backends with built‑in scaling, security, and deployment support.
+
+Difference between IaaS, PaaS, and SaaS?
+Answer:
+
+IaaS: VM, storage control (Azure VM)
+PaaS: Platform managed, less maintenance (App Service)
+SaaS: Fully managed software (Office 365)
+
+ What is Azure SQL vs SQL Server?
+Answer:
+Azure SQL is a fully managed cloud database with built‑in backups, scaling, and high availability, while SQL Server requires server management.
+
+How do you secure APIs in the cloud?
+Answer:
+
+JWT authentication
+Azure AD
+HTTPS
+Role‑based access control
+API Gateway / Azure API Management
+
+
+1. What are the key features of .NET Core / modern .NET?
+Answer:
+
+Cross-platform (Windows, Linux, macOS)
+High performance (Kestrel, async support)
+Built-in Dependency Injection
+Middleware-based pipeline
+Microservices & container support
+Minimal APIs (reduced boilerplate)
+
+2. What is Dependency Injection and why is it important?
+
+Answer:
+Dependency Injection is a design pattern used to inject dependencies into a class rather than creating them inside the class.
+It improves:
+
+Testability
+Loose coupling
+Maintainability
+
+3. Explain middleware in ASP.NET Core
+
+Answer:
+Middleware are components in the HTTP pipeline that:
+
+Handle requests/responses
+Perform logging, authentication, error handling
+
+Example:
+
+app.UseAuthentication();
+app.UseAuthorization();
+❓ 4. What is the difference between IEnumerable, IQueryable?
+
+Answer:
+
+IEnumerable → Executes in memory
+IQueryable → Executes in database (better for performance)
+❓ 5. How do you handle global exceptions?
+
+Answer:
+
+Use middleware or UseExceptionHandler
+Log errors (Serilog / App Insights)
+Return standardized responses (ProblemDetails)
+🧠 🔹 SQL Server Questions
+❓ 6. How do you optimize slow queries?
+
+Answer:
+
+Analyze execution plan
+Add proper indexes
+Avoid SELECT *
+Use joins efficiently
+Reduce scans → prefer seeks
+❓ 7. Difference between clustered and non-clustered index?
+
+Answer:
+
+Clustered → defines physical order (1 per table)
+Non-clustered → separate structure, multiple allowed
+❓ 8. What is a deadlock and how do you handle it?
+
+Answer:
+Deadlock occurs when two transactions block each other.
+Solutions:
+
+Keep transactions short
+Access tables in same order
+Use retry logic
+❓ 9. What is normalization vs denormalization?
+
+Answer:
+
+Normalization → reduce redundancy
+Denormalization → improve read performance
+❓ 10. How do you improve stored procedure performance?
+
+Answer:
+
+Use proper indexes
+Avoid cursors
+Use set-based operations
+Parameter sniffing handling
+🌐 🔹 Angular Questions
+❓ 11. What is Angular architecture?
+
+Answer:
+
+Components (UI)
+Services (business logic)
+Modules (organization)
+Routing (navigation)
+❓ 12. What is dependency injection in Angular?
+
+Answer:
+Angular provides services via DI using providers to promote reusability and modular design.
+
+❓ 13. Difference between Observables and Promises?
+
+Answer:
+
+Promise → single value
+Observable → multiple values, supports streaming
+❓ 14. What is lazy loading?
+
+Answer:
+Load modules only when needed → improves performance.
+
+
+3. Explain middleware in ASP.NET Core
+
+Answer:
+Middleware are components in the HTTP pipeline that:
+
+Handle requests/responses
+Perform logging, authentication, error handling
+
+Example:
+
+app.UseAuthentication();
+app.UseAuthorization();
+❓ 4. What is the difference between IEnumerable, IQueryable?
+
+Answer:
+
+IEnumerable → Executes in memory
+IQueryable → Executes in database (better for performance)
+❓ 5. How do you handle global exceptions?
+
+Answer:
+
+Use middleware or UseExceptionHandler
+Log errors (Serilog / App Insights)
+Return standardized responses (ProblemDetails)
+🧠 🔹 SQL Server Questions
+❓ 6. How do you optimize slow queries?
+
+Answer:
+
+Analyze execution plan
+Add proper indexes
+Avoid SELECT *
+Use joins efficiently
+Reduce scans → prefer seeks
+❓ 7. Difference between clustered and non-clustered index?
+
+Answer:
+
+Clustered → defines physical order (1 per table)
+Non-clustered → separate structure, multiple allowed
+❓ 8. What is a deadlock and how do you handle it?
+
+Answer:
+Deadlock occurs when two transactions block each other.
+Solutions:
+
+Keep transactions short
+Access tables in same order
+Use retry logic
+❓ 9. What is normalization vs denormalization?
+
+Answer:
+
+Normalization → reduce redundancy
+Denormalization → improve read performance
+❓ 10. How do you improve stored procedure performance?
+
+Answer:
+
+Use proper indexes
+Avoid cursors
+Use set-based operations
+Parameter sniffing handling
+🌐 🔹 Angular Questions
+❓ 11. What is Angular architecture?
+
+Answer:
+
+Components (UI)
+Services (business logic)
+Modules (organization)
+Routing (navigation)
+❓ 12. What is dependency injection in Angular?
+
+Answer:
+Angular provides services via DI using providers to promote reusability and modular design.
+
+❓ 13. Difference between Observables and Promises?
+
+Answer:
+
+Promise → single value
+Observable → multiple values, supports streaming
+❓ 14. What is lazy loading?
+
+Answer:
+Load modules only when needed → improves performance.
+
+🔹 Cloud (Azure/AWS) Questions
+❓ 16. How do you deploy a .NET app to Azure?
+
+Answer:
+
+Use Azure App Service
+CI/CD via Azure DevOps or GitHub Actions
+Configure app settings & connection strings
+
+❓ 17. What is Azure App Service?
+
+Answer:
+Platform-as-a-Service to host web apps with scaling, security, and CI/CD support.
+
+21. API is slow in production. What will you do?
+
+Answer:
+
+Check logs & monitoring
+Analyze DB queries
+Check CPU/memory usage
+Add caching
+Optimize async calls
