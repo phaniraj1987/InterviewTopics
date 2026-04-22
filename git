@@ -1,0 +1,44 @@
+git vs github
+git is the version control software that runs locally on machine, it doesnt need internet, you can use git without ever touching github
+
+github:
+it is a service that takes git repositories or projects, hosts them in the cloud and makes
+it easier to collaborate with other people.
+we need to sign kup for an accouint to use github.its onlline place to share work that
+is done using git
+git commands :
+
+git log --online
+
+configure the git
+
+git config --global user.name "Phani"
+
+to see --> git config user.name
+
+configure the email
+git config --global user.email "email"
+ git config user.email
+
+--->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+ls --> list the contents of the current directory
+start . --> to open the directory
+
+
+ls -a --> list all files including hidden files and folders
+pwd-->present working directory
+
+mkdir
+touch purple.txt
+rm purple.txt
+pwd
+
+remove folders --> rm -rf folder
+
+git repository is a workspace which tracks and manages file with in a folder.
+any time when we to use git with a project app, we need to create  a new git repository
+we have have as many repos on our machine as needed with separate histories and contents
+
+
+
+ 
