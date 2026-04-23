@@ -1,0 +1,16 @@
+git init
+git add .
+git status
+
+git commit -m "message"
+git commit
+git config --global core.editor "code --wait"
+
+git log --oneline
+
+
+amending the commit:
+git commit -m "some commit"
+git add forgotton_file.txt
+git commit --amend
+
