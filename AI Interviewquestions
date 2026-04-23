@@ -322,3 +322,285 @@ Analyze DB queries
 Check CPU/memory usage
 Add caching
 Optimize async calls
+
+-----------------------------------
+
+
+
+1) Middleware vs Filters in MVC
+High‑level difference
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AspectMiddlewareFiltersScopeApplication-wide (entire request pipeline)MVC-specific (controllers/actions)ExecutesBefore routing and after routing completionAround controller action executionOrderDefined in Program.cs / Startup.csDefined via attributes or global filtersAwareness of MVC❌ MVC-agnostic✅ MVC-awareCommon useLogging, authentication, CORS, exception handlingAuthorization, validation, result modification
+
+✅ Middleware (ASP.NET Core)
+What it is
+Middleware is a component that handles HTTP requests and responses globally. Each middleware can:
+
+Inspect/modify the request
+Call the next middleware
+Inspect/modify the response
+
+Execution pipeline
+Request
+→ Middleware 1
+→ Middleware 2
+→ Routing
+→ Controller / Action
+→ Response
+
+Examples
+
+Authentication (UseAuthentication)
+Authorization (UseAuthorization)
+Logging
+Global exception handling
+CORS
+Response compression
+
+Example
+Plain Textapp.Use(async (context, next) =>{    Console.WriteLine("Before request");    await next();    Console.WriteLine("After request");});``Show more lines
+Key characteristics
+
+Runs for every request (MVC, Razor Pages, APIs, static files)
+Executes before MVC
+Cannot directly access ActionContext or action parameters
+
+
+✅ Filters (ASP.NET MVC / ASP.NET Core MVC)
+What it is
+Filters are MVC-specific hooks that execute around controller or action methods.
+Filter pipeline
+Authorization Filter
+→ Resource Filter
+→ Action Filter
+→ Action Method
+→ Result Filter
+→ Exception Filter
+
+Filter types
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Filter TypePurposeAuthorizationAuthorization checksResourceRuns before model bindingActionRuns before/after action methodResultRuns before/after action resultExceptionHandle exceptions in MVC
+Example
+Plain Textpublic class LogActionFilter : IActionFilter{    public void OnActionExecuting(ActionExecutingContext context)    {        Console.WriteLine("Before action");    }    public void OnActionExecuted(ActionExecutedContext context)    {        Console.WriteLine("After action");    }}Show more lines
+Applied as:
+C#[ServiceFilter(typeof(LogActionFilter))]public IActionResult Index(){    return View();}Show more lines
+Key characteristics
+
+Executes only for MVC actions
+Has access to:
+
+Action arguments
+Model state
+Action results
+
+
+Can be applied:
+
+Globally
+Controller-level
+Action-level
+
+
+
+
+✅ When to use what?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Use CaseChooseLogging all HTTP requestsMiddlewareGlobal exception handlingMiddlewareAuthorization for MVC actionsFiltersValidate model stateFiltersModify action resultsFilters
+
+2) Difference between Encryption and Hashing (in .NET context)
+High‑level difference
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AspectEncryptionHashingPurposeProtect data and retrieve it laterVerify integrity / passwordsReversible✅ Yes (with key)❌ NoOutputCiphertextHashUses keys✅ Yes❌ NoCommon useSecure data, tokensPassword storage
+
+ Encryption
+What it is
+Encryption converts plaintext → ciphertext, which can be decrypted back using a key.
+Two types
+
+
+Symmetric encryption
+
+Same key for encrypt & decrypt
+Faster
+Example: AES
+
+
+
+Asymmetric encr
+
+yption
+
+Public key encrypts
+Private key decrypts
+Example: RSA
+
+Common uses
+
+Encrypt sensitive data
+Protect configuration secrets
+Secure cookies or 
+
+🔑 Hashing
+What it is
+Hashing converts data into a fixed-length value, and cannot be reversed.
+Key properties
+
+Same input → same hash
+One-way function
+Small change → totally different hash
+
+.NET hashing algorithms
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AlgorithmUsageSHA256General hashingSHA512Stronger hashBCrypt / PBKDF2Password hashing
+
+use hasing for 
+storing passwords 
+and verify data integrity
+
+use encryption for 
+protecting senstive data and
+secure communication
