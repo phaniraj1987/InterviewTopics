@@ -72,5 +72,8 @@ delete a branch
 git branch -D branch_name
 
 
-
+git merge branch:
+first check out to master or main
+and do merge 
+git merge bug_fix
  
