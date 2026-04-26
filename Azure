@@ -1,0 +1,4 @@
+Azure functions provide serverless compute 
+it allows us to focus on code that matters the most to us and functions handles the rest
+azure functions allows us to build web api's , respond to database changes and process streams, handle message queyues etc.,
+with azure functions we write less code have less infrastructure maintenance and in turn we have on the cost
