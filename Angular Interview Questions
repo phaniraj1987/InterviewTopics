@@ -215,6 +215,8 @@ Metric	Before	After
 Initial Load Time	6.5 sec	2.1 sec
 UI Response Time	2–4 sec lag	<500 ms
 Change Detection Runs	~1000+	~200
+
+
 Memory Usage	High/leaking	Stable
 DOM Nodes	~15,000	~2,000
 🧠 Key Learnings
@@ -230,3 +232,183 @@ Overusing RxJS operators unnecessarily
 🧠 Interview-ready answer
 
 “In a large Angular dashboard, we improved performance by switching to OnPush change detection, splitting global state into feature-level observables, introducing Signals for fine-grained updates, and using virtual scrolling for large datasets. These changes reduced re-renders significantly and improved UI responsiveness from seconds to sub-500ms.
+
+
+WHAT IS @output
+
+@output is a decorator that creates a custome event in a child component.
+The parent component can listen to this event and react when it happens
+
+use @output when
+1. a button is clicked in a child component
+2. a form is sumbmitted in a child component
+3. data changes in a child and the parent must know
+
+Child Component  ---- emits event ---->  Parent Component
+
+child component:
+import { Component, Output, EventEmitter } from '@angular/core';
+
+@Component({
+  selector: 'app-child',
+  template: `
+    <button (click)="sendMessage()">Send to Parent</button>
+  `
+})
+export class ChildComponent {
+
+  @Output() messageEvent = new EventEmitter<string>();
+
+  sendMessage() {
+    this.messageEvent.emit('Hello from Child!');
+  }
+}
+
+🔹 @Output() marks an event
+🔹 EventEmitter sends the data
+🔹 .emit() triggers the event
+
+
+parent component :
+<app-child (messageEvent)="receiveMessage($event)"></app-child>
+
+<p>{{ message }}</p>
+
+✅ $event contains the data sent from the child.
+
+---------------------------------------
+✅ Output with Form Example
+@output() submitForm = new EventEmitter<any>();
+this.submitForm.emit(this.form.value);
+
+parent :
+<app-child (submitForm)="onFormSubmit($event)"></app-child>
+
+✅ Difference Between @Input and @Output
+
+ 
+DecoratorDirection@Input()Parent → Child@Output()Child → Parent
+
+why do you use observable in aNGULAR?
+Angular applications deals hevily with asynchronouse data and observables provide a powerful
+consitent and scalable way to handle it
+an observable is a stream of data that
+1. it can emit multiple values over time
+2. it can subscribed and can be cancelled
+3. can be transformed using operators
+4. is lazy (executes only when subscribed)
+
+Angular apps constantly work with async data such as:
+1. http api calls
+2. user input events
+3 route changes
+
+2️⃣ Supports Multiple Values Over Time
+Unlike Promises (which return one value only), Observables can return many values.
+✅ Perfect for:
+
+Live data
+Real-time updates
+Form value changes
+4. webscoket data
+5. timers
+
+
+3️⃣ Cancel or Unsubscribe (Memory Safety)
+Observables can be unsubscribed, preventing memory leaks.
+subscription.unsubscribe();
+
+✅ Promises cannot be cancelled
+✅ Observables can be stopped anytime
+This is why Angular uses Observables in:
+
+HTTP requests
+Router events
+Components lifecycle
+
+4️⃣ Powerful Data Transformation (RxJS Operators)
+Observables can be transformed easily using operators like:
+
+map
+filter
+switchMap
+debounceTime
+mergeMap
+
+
+5️⃣ Lazy Execution (Better Performance)
+const obs$ = this.http.get('/api/data'); // not executed yet
+
+obs$.subscribe(); // executed now
+
+Angular provides async pipe to auto‑subscribe and auto‑unsubscribe.
+7️⃣ Works Perfectly With Async Pipe
+<div *ngIf="users$ | async as users">
+  {{ users.length }}
+</div>
+✅ No manual unsubscribe
+✅ Cleaner templates
+✅ Prevents memory leaks
+
+1️⃣ To Handle Asynchronous Operations
+2️⃣ Supports Multiple Values Over Time
+3️⃣ Cancel or Unsubscribe (Memory Safety)
+4️⃣ Powerful Data Transformation (RxJS Operators)
+5️⃣ Lazy Execution (Better Performance)
+6️⃣ Consistency Across Angular Framework
+7️⃣ Works Perfectly With Async Pipe
+
+Angular uses Observables because they efficiently
+handle asynchronous data streams, support multiple values, can be cancelled,
+and integrate seamlessly with RxJS and Angular features.
+
+Guards decide whether navigation is allowed, while Interceptors handle API‑level authentication like attaching JWT tokens
+and handling HTTP errors.\
+They solve different problems and are used together.
+
+JWT is stateless authentication
+Token expiration improves security
+Refresh token avoids forced logout
+Guards protect routes
+Interceptors protect API calls
+Angular + .NET Core is a standard enterprise stack
+
+An observable is a unicast data stream
+each subscriber get is own execution , producer is created inside the observable
+
+const obs$ = new Obserbale(observer =>{
+observer.next(Math.Random());
+});
+obs$.subscribe(val => console.log(val));
+
+
+Subject ---->
+Subject is both an observable and an observer
+it is multicast. i.e same data shared with all the subscribers.
+
+const subject$ = new Subject<number>();
+subject$.subscribe(v => console.log('A:',v);
+
+✅ Observable → Data source
+✅ Subject → Event broadcaster
+
+✅ Types of Subjects (VERY IMPORTANT)
+🔹 Subject
+
+No initial value
+Late subscribers miss previous values
+
+🔹 BehaviorSubject ⭐⭐⭐
+
+Requires initial value
+Emits latest value immediately
+
+const bs$ = new BehaviorSubject(0);
+
+map --> map transforms the data .. map (user => user.name)
+filter -> filter the values  ,=... filter(user => user.active)
+switchmap --> cancels pervious request and also used for search, routing, depedent apis
+
+this.route.paramMap.pie(
+switchMap(id => this.api.getUser(id))
+)
