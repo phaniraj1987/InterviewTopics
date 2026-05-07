@@ -1,0 +1,30 @@
+get lenth of the string
+string str = "Phani";
+int length = str.Length;
+
+Replace:
+var result = str.Replace("Phani","Raj");
+var result1 = str.Replace('P','p');
+
+SubString : 
+string orignalstring="my name is phani";
+int startindex = 3;
+var resultstring= orignalstring.Substring(startindex); //name is phani
+var resultstring1= orignalstring.Substring(startindex,4); //name
+
+indexof
+    int resultindexof = str.IndexOf("cream");
+lastindexof:
+
+    int lastindexofresult =str.LastIndexOf('c');
+
+split
+string userinput = "apple,banana,orange";
+string[] subuserinput = userinput.Split(",");
+string[] subuserinput1 = userinput.Split(",",2); // retrieves only 2 elements
+
+
+Trim : Remove leading and trailing while spaces
+ string someinput = "$$$$    some text here  $$$$";
+ Console.WriteLine($"Before trimming: {someinput}");
+ Console.WriteLine($"After Trimming {someinput.Trim('$',' ')}");
