@@ -28,3 +28,25 @@ Trim : Remove leading and trailing while spaces
  string someinput = "$$$$    some text here  $$$$";
  Console.WriteLine($"Before trimming: {someinput}");
  Console.WriteLine($"After Trimming {someinput.Trim('$',' ')}");
+
+//endswith
+string filename ="filename.jpg";
+bool result = filename.EndsWith(".jpg"); // true
+//startswith
+
+string url ="https://google.com";
+if(url.StartsWith("HTTPS",StringComparison.OrdinalIgnoreCase))
+Console.WriteLine("Secure Link");
+
+//contains
+string[] cities ={"hyderabad", "Toronto","London"}
+
+     //contains
+     string[] cities = { "New Delhi", "Los Angeles", "Toronto", "London" };
+     string userTypedText = "del";
+     foreach (string city in cities)
+     {
+         if(city.Contains(userTypedText,StringComparison.OrdinalIgnoreCase))
+             Console.WriteLine( $"City was found {city}");
+         break;
+     }
