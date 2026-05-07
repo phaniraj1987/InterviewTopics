@@ -50,3 +50,55 @@ string[] cities ={"hyderabad", "Toronto","London"}
              Console.WriteLine( $"City was found {city}");
          break;
      }
+
+output parameters:
+1. output parameters are used to return data from a method back to the caller
+2. output paramets allow methods to return multiple values to the caller
+3. output parameters are declared in the method signature using the out keyword.
+
+Named Parameters:
+Allows to specify the arguments for a method by associating them with paramets names rather than relying on the order in which
+the parameters are defined.
+Improves readility
+we an skp optinal parameters
+reorder required parameters
+
+Class:
+1. Class is a blueprint for creating objects
+2. Class is a  building block for object oriented programming
+3. Allows to define the structure and behaviour of objects of that type
+4. Class contains data and methods that act on the data
+
+Constructor():
+!. Construct is a special type of method that is automatically called when an instance of a class is created
+2. its primary job is to initialize the newly created object
+3. constructors have the same name as the class and may or may not accept parameters.
+
+Default Constructor:
+1. Default constructor doesnt accept any parameters
+2. If we dont define any constructors in the class, c# provides a default constructor automatically
+3. it initiazes member variables to their default values i.e null for reference types, zero for numeric types.
+
+properties:
+properties enable a class to expose a public way of getting and setting values, while hiding the implmentation.
+get property accessor is used to return the property value and
+set property accesssor is used to assign a new value
+public string Name 
+{
+    get{ return name;}
+    set { name=value;}
+}
+
+properties allow to encapsulate fields with in a class, which means hiding the internal state of an object and preventing direct state of class
+
+
+polymorphism:
+polymorphism allows objects of different types to be treated as objects of a common base type
+means a single interface can represent multiple implementations
+polymorphism is achieved through inheritance through method overloading and method overriding
+
+method overriding or run time polymorphism:
+1. it allows a derived class to privide a specific implementatino of a method that is already defined int is base class
+2. allows a sub class to provide its own implementation of a method with the same signature
+3. method overriding is a form or run time polymorphism , where a  method to be invoked is determined at runtime
+4.  implemented using virual and overide keywords
