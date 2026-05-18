@@ -1,0 +1,54 @@
+What are some fundamental concepts in .NET, and how do they form the foundation for software development in the .NET ecosystem?
+
+What was the team structure in your previous project, and how did it support microservices development and deployment?
+What is load balancing, and how is it implemented in a microservices-based application?
+Can you explain the concept of microservice architecture and its key benefits over monolithic architecture?
+What is a REST API, and what are its common use cases in application development?
+How would you call a REST API to retrieve data, and how would you format and display that data in your application?
+How do you check if a given string is a palindrome? Can you provide a simple code example?
+How would you find duplicates in an array of integers? Can you explain your approach and its time complexity?
+
+Expalin about Dependency Inversion Principle in SOLID
+Give some benefits of TypeScript
+Expain about State management in MVC
+Explain about Web API authentication and authorization
+Explain about Azure Function App?
+
+Difference between abstraction and interface ?					
+What is DI & its types ?					
+What is middleware ?					
+Describe authentication and authorization in .Net core. How it works out? 					
+					
+How does dependency injection work in the context of software development?					
+What is the difference between a static class and a class with a private constructor?					
+How can I create an API using a static class?					
+Could you provide a C# program that implements the binary search algorithm, highlighting its efficiency and functionality within the .NET ecosystem?					
+What are the key advantages and benefits of utilizing WPF (Windows Presentation Foundation) for desktop application development within the .NET framework?					
+Could you demonstrate proficiency in C# by writing programs that manipulate strings, showcasing various operations such as concatenation, substring extraction, and searching?					
+Could you elaborate on the distinctions between the MVC (Model-View-Controller) and MVVM (Model-View-ViewModel) architectural patterns, particularly in the context of .NET development?					
+How do you bind a command in the MVVM pattern?					
+What is a DispatchFrame and how is it used?					
+What is the role of RelayCommand in the MVVM pattern?					
+How do you initialize a progress bar?					
+How can you use a delegate to trigger an event?					
+What is the difference between ref and out keywords?					
+Could you explain the functionality and usage of MVC Exception Filters?					
+
+					
+What is the purpose of the modulus operator in C#?"					
+What is the process of implementing dependency injection in .NET?					
+Could you provide an explanation of what a .Net ORM (Object-Relational Mapping) is and its role in development?					
+Can you explain the differences between addSingleton, addTransient, and addScoped in .Net Core?					
+How would you define middleware in the context of .Net Core?					
+What is the purpose of the launchsettings.json file in .Net Core?					
+What roles do app.use and app.run play in a .Net Core application?					
+Can you elaborate on the concept of service lifetime in .Net Core?					
+					
+A critical production page has become slow or unresponsive due to unexpected data growth. What is your approach, from identifying the issue to deploying a fix, while ensuring minimal downtime and customer impact.
+Explain how you would apply CQRS in a high‑traffic application.
+What is your approach for containerizing an application with Docker and deploying it to a cloud platform?
+What are the key architectural, operational, and governance considerations you would address while designing, implementing, and scaling a microservices‑based application?
+How to secure Web API ?
+Explain the application of nuget packages.
+Write a linq query with left join .
+Discuss your knowledge of Git and any experiences you've had with C# in relation to version control and development.
